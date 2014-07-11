@@ -3,7 +3,6 @@ require('should');
 var sinon = require('sinon'),
     Player = require('../player');
 
-
 describe("Player", function(){
   
   beforeEach(function(){
