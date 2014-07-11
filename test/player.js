@@ -21,8 +21,7 @@ describe("Player", function(){
   
   it('can load a Track', function(){
     var track = require('./fixtures/track');
-    var player = new Player();
-    player.load(track);
+    var player = new Player().load(track);
     player.track.should.equal(track);
   });
     
@@ -33,9 +32,7 @@ describe("Player", function(){
     
     beforeEach(function(){
       var track = require('./fixtures/track');
-      player = new Player(doer);
-      player.load(track);
-      player.play();
+      player = new Player(doer).load(track).play();
     });
     
     afterEach(function(){

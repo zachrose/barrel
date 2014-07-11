@@ -6,6 +6,7 @@ var Player = function(doer){
 
 Player.prototype.load = function(track){
   this.track = track;
+  return this;
 }
 
 Player.prototype.play = function(){
@@ -21,6 +22,7 @@ Player.prototype.play = function(){
   this._roller = setInterval(function(){
     self._playHead += 1;
   }, 1);
+  return this;
 }
 
 Player.prototype.stop = function(){
@@ -29,6 +31,7 @@ Player.prototype.stop = function(){
   });
   clearInterval(this._roller);
   this._playHead = 0;
+  return this;
 }
 
 Player.prototype.pause = function(){
@@ -36,6 +39,7 @@ Player.prototype.pause = function(){
     clearTimeout(timeout);
   });
   clearInterval(this._roller);
+  return this;
 }
 
 module.exports = Player;
