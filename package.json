@@ -1,0 +1,17 @@
+{
+  "name": "00101010",
+  "version": "0.1.0",
+  "description": "00101010 00101010 00101010",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:zachrose/00101010.git"
+  },
+  "keywords": [
+    "00101010"
+  ],
+  "author": "Zach Rose"
+}
