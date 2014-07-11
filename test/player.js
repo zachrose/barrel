@@ -26,14 +26,15 @@ describe("Player", function(){
     player.track.should.equal(track);
   });
   
-  describe("playing", function(){
+  describe("play", function(){
     
     var self = this,
-        doer = sinon.spy();
+        doer = sinon.spy(),
+        player = null;
     
     beforeEach(function(){
-      var player = new Player(doer);
       var track = require('./fixtures/track');
+      player = new Player(doer);
       player.load(track);
       player.play();
     });
@@ -51,6 +52,34 @@ describe("Player", function(){
       done();
     });
 
-  })
+  });
+  
+  describe("stop", function(){
+    var self = this,
+        doer = sinon.spy(),
+        player = null;
+    
+    beforeEach(function(){
+      var track = require('./fixtures/track');
+      player = new Player(doer);
+      player.load(track);
+      player.play();
+    });
+    
+    afterEach(function(){
+      doer.reset();
+    });
+    
+    it('stops and goes back to the beginning', function(done){
+      this.clock.tick(10);
+      player.stop();
+      this.clock.tick(5);
+      doer.lastCall.args[0].should.equal('boom');
+      player.play();
+      this.clock.tick(10);
+      doer.callCount.should.be.exactly(2);
+      done();
+    });
+  });
   
 })
