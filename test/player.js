@@ -25,9 +25,8 @@ describe("Player", function(){
     player.load(track);
     player.track.should.equal(track);
   });
-  
-  describe("play", function(){
     
+  describe("playback", function(){
     var self = this,
         doer = sinon.spy(),
         player = null;
@@ -43,31 +42,13 @@ describe("Player", function(){
       doer.reset();
     });
     
-    it('does the right things at the right times', function(done){
+    it('plays the right things at the right times', function(done){
       doer.callCount.should.be.exactly(0);
       this.clock.tick(10);
       doer.lastCall.args[0].should.equal('boom');
       this.clock.tick(5);
       doer.lastCall.args[0].should.equal('blip');
       done();
-    });
-
-  });
-  
-  describe("stop", function(){
-    var self = this,
-        doer = sinon.spy(),
-        player = null;
-    
-    beforeEach(function(){
-      var track = require('./fixtures/track');
-      player = new Player(doer);
-      player.load(track);
-      player.play();
-    });
-    
-    afterEach(function(){
-      doer.reset();
     });
     
     it('stops and goes back to the beginning', function(done){
@@ -78,6 +59,18 @@ describe("Player", function(){
       player.play();
       this.clock.tick(10);
       doer.callCount.should.be.exactly(2);
+      done();
+    });
+    
+    it('pauses and resumes', function(done){
+      this.clock.tick(10);
+      player.pause();
+      this.clock.tick(5);
+      doer.lastCall.args[0].should.equal('boom');
+      player.play();
+      this.clock.tick(5);
+      doer.callCount.should.be.exactly(2);
+      doer.lastCall.args[0].should.equal('blip');
       done();
     });
   });
