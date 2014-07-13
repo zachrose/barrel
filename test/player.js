@@ -4,15 +4,7 @@ var sinon = require('sinon'),
     Player = require('../player');
 
 describe("Player", function(){
-  
-  beforeEach(function(){
-    this.clock = sinon.useFakeTimers();
-  });
-  
-  afterEach(function(){
-    this.clock.restore();
-  });
-  
+
   it("accepts a doer", function(){
     var doer = sinon.spy();
     var player = new Player(doer);
@@ -25,18 +17,19 @@ describe("Player", function(){
     player.track.should.equal(track);
   });
     
-  describe("playback", function(){
-    var self = this,
-        doer = sinon.spy(),
+  describe("playback controls ", function(){
+    var doer = sinon.spy(),
         player = null;
     
     beforeEach(function(){
+      this.clock = sinon.useFakeTimers();
       var track = require('./fixtures/track');
       player = new Player(doer).load(track).play();
     });
     
     afterEach(function(){
       doer.reset();
+      this.clock.restore();
     });
     
     it('plays the right things at the right times', function(done){
@@ -56,6 +49,7 @@ describe("Player", function(){
       player.play();
       this.clock.tick(10);
       doer.callCount.should.be.exactly(2);
+      doer.lastCall.args[0].should.equal('boom');
       done();
     });
     
