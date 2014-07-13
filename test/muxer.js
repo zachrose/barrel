@@ -1,5 +1,5 @@
 var should = require('should'),
-    Muxer = require('../muxer');
+    Muxer = require('../lib/muxer');
 
 describe("Muxer", function(){
 

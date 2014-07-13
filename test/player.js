@@ -1,7 +1,7 @@
 require('should');
 
 var sinon = require('sinon'),
-    Player = require('../player');
+    Player = require('../lib/player');
 
 describe("Player", function(){
 

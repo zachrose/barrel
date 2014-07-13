@@ -2,6 +2,7 @@
   "name": "00101010",
   "version": "0.1.0",
   "description": "00101010 00101010 00101010",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "test": "mocha"
@@ -17,10 +18,9 @@
   "devDependencies": {
     "mocha": "^1.20.1",
     "should": "^4.0.4",
-    "sinon": "^1.10.3"
-  },
-  "dependencies": {
+    "sinon": "^1.10.3",
     "express": "^4.5.1",
     "ws": "^0.4.31"
-  }
+  },
+  "dependencies": {}
 }
