@@ -22,5 +22,7 @@
     "express": "^4.5.1",
     "ws": "^0.4.31"
   },
-  "dependencies": {}
+  "dependencies": {
+    "events": "^1.0.1"
+  }
 }
