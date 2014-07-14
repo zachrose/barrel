@@ -17,14 +17,14 @@ describe("Player", function(){
     player.track.should.equal(track);
   });
     
-  describe("playback controls ", function(){
+  describe("playback controls", function(){
     var doer = sinon.spy(),
         player = null;
     
     beforeEach(function(){
       this.clock = sinon.useFakeTimers();
       var track = require('./fixtures/track');
-      player = new Player(doer).load(track).play();
+      player = new Player(doer).load(track);
     });
     
     afterEach(function(){
@@ -33,6 +33,7 @@ describe("Player", function(){
     });
     
     it('plays the right things at the right times', function(done){
+      player.play();
       doer.callCount.should.be.exactly(0);
       this.clock.tick(10);
       doer.lastCall.args[0].should.equal('boom');
@@ -42,6 +43,7 @@ describe("Player", function(){
     });
     
     it('stops and goes back to the beginning', function(done){
+      player.play();
       this.clock.tick(10);
       player.stop();
       this.clock.tick(5);
@@ -54,6 +56,7 @@ describe("Player", function(){
     });
     
     it('pauses and resumes', function(done){
+      player.play();
       this.clock.tick(10);
       player.pause();
       this.clock.tick(5);
@@ -64,6 +67,24 @@ describe("Player", function(){
       doer.lastCall.args[0].should.equal('blip');
       done();
     });
+    
+    describe('quiet no-ops when', function(){
+      
+      it('stopping a non-playing track', function(done){
+        player.stop();
+        player.stop();
+        done();
+      });
+      
+      it('pausing a non-playing track', function(done){
+        player.pause();
+        player.pause();
+        done();
+      });
+    
+    });
+    
+    
   });
   
 })
