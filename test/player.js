@@ -76,13 +76,12 @@ describe("Player", function(){
       done();
     })
     
-    it('fires a `tick` event every played ms', function(){
+    it('fires a `tick` event with the ms', function(){
       var interested = sinon.spy();
       player.on('tick', interested);
       player.play();
       this.clock.tick(10);
       player.pause();
-      interested.callCount.should.be.exactly(10);
       interested.lastCall.args[0].should.equal(10);
     });
     
