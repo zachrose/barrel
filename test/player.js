@@ -86,6 +86,15 @@ describe("Player", function(){
       interested.lastCall.args[0].should.equal(10);
     });
     
+    it('fires a `tick` when the player stops', function(){
+      var interested = sinon.spy();
+      player.on('tick', interested);
+      player.play();
+      this.clock.tick(10);
+      player.stop();
+      interested.lastCall.args[0].should.equal(0);
+    })
+    
   });
   
 });
