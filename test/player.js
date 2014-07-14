@@ -16,8 +16,8 @@ describe("Player", function(){
     var player = new Player().load(track);
     player.track.should.equal(track);
   });
-    
-  describe("playback controls", function(){
+  
+  describe("playback", function(){
     var doer = sinon.spy(),
         player = null;
     
@@ -68,23 +68,24 @@ describe("Player", function(){
       done();
     });
     
-    describe('quiet no-ops when', function(){
-      
-      it('stopping a non-playing track', function(done){
-        player.stop();
-        player.stop();
-        done();
-      });
-      
-      it('pausing a non-playing track', function(done){
-        player.pause();
-        player.pause();
-        done();
-      });
+    it('quietly accepts nonsense', function(done){
+      player.stop();
+      player.stop();
+      player.pause();
+      player.pause();
+      done();
+    })
     
+    it('fires a `tick` event every played ms', function(){
+      var interested = sinon.spy();
+      player.on('tick', interested);
+      player.play();
+      this.clock.tick(10);
+      player.pause();
+      interested.callCount.should.be.exactly(10);
+      interested.lastCall.args[0].should.equal(10);
     });
-    
     
   });
   
-})
+});
