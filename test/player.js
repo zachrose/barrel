@@ -37,7 +37,7 @@ describe("Player", function(){
       doer.callCount.should.be.exactly(0);
       this.clock.tick(10);
       doer.lastCall.args[0].should.equal('boom');
-      this.clock.tick(5);
+      this.clock.tick(10);
       doer.lastCall.args[0].should.equal('blip');
       done();
     });
@@ -46,12 +46,13 @@ describe("Player", function(){
       player.play();
       this.clock.tick(10);
       player.stop();
-      this.clock.tick(5);
+      this.clock.tick(10);
+      doer.callCount.should.be.exactly(1);
       doer.lastCall.args[0].should.equal('boom');
       player.play();
-      this.clock.tick(10);
-      doer.callCount.should.be.exactly(2);
-      doer.lastCall.args[0].should.equal('boom');
+      this.clock.tick(20);
+      doer.callCount.should.be.exactly(3);
+      doer.lastCall.args[0].should.equal('blip');
       done();
     });
     
@@ -59,10 +60,10 @@ describe("Player", function(){
       player.play();
       this.clock.tick(10);
       player.pause();
-      this.clock.tick(5);
+      doer.callCount.should.be.exactly(1);
       doer.lastCall.args[0].should.equal('boom');
       player.play();
-      this.clock.tick(5);
+      this.clock.tick(10);
       doer.callCount.should.be.exactly(2);
       doer.lastCall.args[0].should.equal('blip');
       done();
@@ -80,9 +81,9 @@ describe("Player", function(){
       var interested = sinon.spy();
       player.on('tick', interested);
       player.play();
-      this.clock.tick(10);
+      this.clock.tick(500);
       player.pause();
-      interested.lastCall.args[0].should.equal(10);
+      interested.lastCall.args[0].should.equal(500);
     });
     
     it('fires a `tick` when the player stops', function(){
