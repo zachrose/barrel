@@ -35,35 +35,37 @@ describe("Player", function(){
     it('plays the right things at the right times', function(done){
       player.play();
       doer.callCount.should.be.exactly(0);
-      this.clock.tick(10);
+      this.clock.tick(101);
       doer.lastCall.args[0].should.equal('boom');
-      this.clock.tick(10);
+      this.clock.tick(100);
       doer.lastCall.args[0].should.equal('blip');
       done();
     });
     
     it('stops and goes back to the beginning', function(done){
       player.play();
-      this.clock.tick(10);
+      // 50
+      this.clock.tick(50);
       player.stop();
-      this.clock.tick(10);
+      // stopped
+      this.clock.tick(100);
+      doer.callCount.should.be.exactly(0);
+      player.play();
+      // 150 on track
+      this.clock.tick(100);
       doer.callCount.should.be.exactly(1);
       doer.lastCall.args[0].should.equal('boom');
-      player.play();
-      this.clock.tick(20);
-      doer.callCount.should.be.exactly(3);
-      doer.lastCall.args[0].should.equal('blip');
       done();
     });
     
     it('pauses and resumes', function(done){
       player.play();
-      this.clock.tick(10);
+      this.clock.tick(150);
       player.pause();
       doer.callCount.should.be.exactly(1);
       doer.lastCall.args[0].should.equal('boom');
       player.play();
-      this.clock.tick(10);
+      this.clock.tick(100);
       doer.callCount.should.be.exactly(2);
       doer.lastCall.args[0].should.equal('blip');
       done();
