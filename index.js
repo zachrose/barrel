@@ -1,4 +1,6 @@
 module.exports = {
   player: require('./lib/player'),
-  muxer: require('./lib/muxer')
+  mux: require('./lib/muxer').mux,
+  demux: require('./lib/muxer').demux
 }
+
