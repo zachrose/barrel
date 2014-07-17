@@ -1,10 +1,10 @@
 var should = require('should'),
-    Muxer = require('../lib/muxer');
+    muxer = require('../lib/muxer');
 
 describe("Muxer", function(){
 
   it("it can mux many named tracks into one track with many channels", function(){
-      var muxed = new Muxer().mux({
+      var muxed = muxer.mux({
         'count': [{t: 0, d: 'one'},{t: 10, d: 'two'}],
         'alphabet': [{t: 0, d: 'A'},{t: 10, d: 'B'},{t: 20, d: 'C'}],
         'numbers': [{t: 25, d: 3}]
@@ -35,7 +35,7 @@ describe("Muxer", function(){
       'alphabet': [{t: 0, d: 'A'},{t: 10, d: 'B'},{t: 20, d: 'C'}],
       'numbers': [{t: 25, d: 3}]
     }
-    var actual = new Muxer().demux(muxed);
+    var actual = muxer.demux(muxed);
     should(actual).eql(expected);
   });
   
