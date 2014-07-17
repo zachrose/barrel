@@ -42,6 +42,16 @@ describe("Player", function(){
       done();
     });
     
+    it('plays a multichannel track, calls the doer with the channel like so', function(){
+      var multichannel = [
+        {t: 0, d: "A", channel: 'my_great_channel'}
+      ];
+      player.load(multichannel);
+      player.play();
+      this.clock.tick(1);
+      doer.lastCall.args[1].should.equal('my_great_channel');
+    });
+    
     it('stops and goes back to the beginning', function(done){
       player.play();
       // 50
