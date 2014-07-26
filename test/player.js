@@ -1,6 +1,7 @@
 require('should');
 
-var sinon = require('sinon'),
+var assert = require('assert'),
+    sinon = require('sinon'),
     Player = require('../lib/player');
 
 describe("Player", function(){
@@ -105,8 +106,26 @@ describe("Player", function(){
       this.clock.tick(10);
       player.stop();
       interested.lastCall.args[0].should.equal(0);
-    })
+    });
     
+    describe("scrubbing", function(){
+
+      it('can be scrubbed while not playing', function(){
+        player.scrubTo(90);
+        assert.equal(player.doer.lastCall, undefined);
+        player.play();
+        this.clock.tick(20);
+        player.doer.lastCall.args[0].should.equal('boom');
+      });
+      
+      it('can be scrubbed while playing', function(){
+        player.play();
+        player.scrubTo(100);
+        player.doer.lastCall.args[0].should.equal('boom');
+      })
+    
+    });
+
   });
   
 });
