@@ -108,6 +108,15 @@ describe("Player", function(){
       interested.lastCall.args[0].should.equal(0);
     });
     
+    it('fires a `tick` when requested', function(){
+      var interested = sinon.spy();
+      player.on('tick', interested);
+      player.play();
+      this.clock.tick(150);
+      player.requestTick();
+      interested.lastCall.args[0].should.equal(150);
+    });
+    
     describe("scrubbing", function(){
 
       it('can be scrubbed while not playing', function(){
@@ -122,7 +131,14 @@ describe("Player", function(){
         player.play();
         player.scrubTo(100);
         player.doer.lastCall.args[0].should.equal('boom');
-      })
+      });
+      
+      it('ticks at the end of a scrub', function(){
+        var interested = sinon.spy()
+        player.on('tick', interested);
+        player.scrubTo(90);
+        interested.lastCall.args[0].should.equal(90);        
+      });
     
     });
 
