@@ -117,6 +117,13 @@ describe("Player", function(){
       interested.lastCall.args[0].should.equal(150);
     });
     
+    it("can be set to repeat", function(){
+      player.repeat(true).play();
+      this.clock.tick(400);
+      player.doer.callCount.should.equal(4);
+      player.doer.lastCall.args[0].should.equal('blip');
+    });
+    
     describe("scrubbing", function(){
 
       it('can be scrubbed while not playing', function(){
