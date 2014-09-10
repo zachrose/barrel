@@ -148,6 +148,25 @@ describe("Player", function(){
       });
     
     });
+    
+    describe("jumping", function(){
+      
+      it('can jump to a new time by skipping over events', function(){
+        player.play();
+        player.jumpTo(180);
+        assert.equal(player.doer.lastCall, undefined);
+        this.clock.tick(40);
+        player.doer.lastCall.args[0].should.equal('blip');
+      });
+      
+      it('ticks at the end of a jump', function(){
+        var interested = sinon.spy()
+        player.on('tick', interested);
+        player.jumpTo(90);
+        interested.lastCall.args[0].should.equal(90);
+      });
+      
+    });
 
   });
   
