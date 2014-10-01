@@ -1,8 +1,7 @@
 {
-  "name": "00101010",
+  "name": "Barrel",
   "version": "0.1.0",
-  "description": "00101010 00101010 00101010",
-  "private": true,
+  "description": "An abstract player for sequences of timed events.",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
@@ -12,7 +11,7 @@
     "url": "git@bitbucket.org:zachrose/00101010.git"
   },
   "keywords": [
-    "00101010"
+    "timed", "event", "sequence", "player", "leierkasten"
   ],
   "author": "Zach Rose",
   "devDependencies": {
