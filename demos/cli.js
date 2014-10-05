@@ -1,18 +1,18 @@
-Player = require('../player');
+Player = require('../lib/player');
 
 player = new Player(function(d){
   console.log(d);
 }).load([
-  { t: 2*0,    d: "this" },
-  { t: 2*100,  d: "is" },
-  { t: 2*150,  d: "a" },
-  { t: 2*500,  d: "very" },
-  { t: 2*530,  d: "very" },
-  { t: 2*560,  d: "very" },
-  { t: 2*900,  d: "impressive" },
-  { t: 2*1000, d: "demo" }
+  { t: 0,     d: "this" },
+  { t: 200,   d: "is" },
+  { t: 300,   d: "a" },
+  { t: 1000,  d: "very" },
+  { t: 1060,  d: "very" },
+  { t: 1120,  d: "very" },
+  { t: 1800,  d: "impressive" },
+  { t: 2000,  d: "demo" }
 ]).play();
 
 setTimeout(function(){
   process.exit(0);
-}, 2*1000);
+}, 3000);

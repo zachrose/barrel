@@ -1,7 +1,7 @@
 var WebSocketServer = require('ws').Server,
     express = require('express'),
     app = express(),
-    Player = require('../../player');
+    Player = require('../../lib/player');
 
 var track = [
   { t: 100,  d: {hue:   0, saturation: 100, lightness: 50}},
