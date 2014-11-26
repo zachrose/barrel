@@ -4,7 +4,7 @@ Everyone knows that time-based things can be done with setTimeout in JavaScript:
   var milliseconds = 1000;
   setTimeout(doSomething, milliseconds);
   
-What this JavaScript library presupposes is... maybe we can shift things around a bit?
+What this JavaScript library presupposes is: maybe we can shift things around a bit?
 
   var something = "something";
   var doer = function(thing){ console.log("Doing " + thing) };
@@ -27,18 +27,8 @@ This is where Barrel comes in, providing a Player that you can initialize with t
   document.getElementById('play').onclick = function(){ player.play() };
   document.getElementById('pause').onclick = function(){ player.pause() };
 
-So far this is all pretty abstract, but that's on purpose. With some imagination, you can use Barrel to work with timed event sequences of any kind: a dancing hamster on a web page, a loading animation, or a Node.js-controlled pyrotechnics display for your glam metal tribute band.
+So far this is all pretty abstract, but that's on purpose. With some imagination, you can use Barrel to work with timed event sequences of any kind: a dancing hamster on a web page, a loading animation, or a Node.js-ignited firework display.
 
-Separating things out into a player and a sequence has a few neat side-effects. Barrel doesn't do this for you, but it's relatively straightforward to write an HTML template and some CSS that transforms an event sequence into a visual representation:
+Separating things out into a player and a sequence has a few neat side-effects. Barrel doesn't do this for you, but it's relatively straightforward to write an HTML template and some CSS that transforms an event sequence into a visual representation. Additional work to make that representation interactive would result in an editor. Sequences can also be stored, analyzed, and transformed in interesting ways with the functional JavaScript tool belt of your choice.
 
-  var lightShow = [
-    { time:    0, data: {r:   0, g: 255, b: 255 } },
-    { time:  500, data: {r: 255, g:   0, b: 255 } },
-    { time: 1000, data: {r: 255, g: 255, b:   0 } }
-  ];
-  
-  // ...
-  
-Making such a representation into an interactive editor is left as an exercise to the reader. Sequences can also be saved as JSON and be transformed in interesting ways with the functional JavaScript tool belt of your choice.
-
-Barrel has no dependencies and works in just about any JavaScript environment.
+At this time Barrel depends on the [events](https://www.npmjs.org/package/events) npm module to emit a 'tick' event at a given interval of time while playing. I haven't tried to figure out how to make it work in a browser without Browserify.
