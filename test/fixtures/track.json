@@ -1,10 +1,10 @@
 [
   {
-    "t": 100,
-    "d": "boom"
+    "time": 100,
+    "data": "boom"
   },
   {
-    "t": 200,
-    "d": "blip"
+    "time": 200,
+    "data": "blip"
   }
 ]

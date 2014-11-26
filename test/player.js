@@ -45,7 +45,7 @@ describe("Player", function(){
     
     it('plays a multichannel track, calls the doer with the channel like so', function(){
       var multichannel = [
-        {t: 0, d: "A", channel: 'my_great_channel'}
+        {time: 0, data: "A", channel: 'my_great_channel'}
       ];
       player.load(multichannel);
       player.play();
