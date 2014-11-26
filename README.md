@@ -37,6 +37,6 @@ document.getElementById('pause').onclick = function(){ player.pause() };
 
 So far this is all pretty abstract, but that's on purpose. With some imagination, you can use Barrel to work with timed event sequences of any kind: a dancing hamster on a web page, a loading animation, or a Node.js-ignited firework display.
 
-Separating things out into a player and a sequence has a few neat side-effects. Barrel doesn't do this for you, but it's relatively straightforward to write an HTML template and some CSS that transforms an event sequence into a visual representation. Additional work to make that representation interactive would result in an editor. Sequences can also be stored, analyzed, and transformed in interesting ways with the functional JavaScript tool belt of your choice.
+Separating things out into a player and a sequence has a few neat side-effects. Barrel doesn't do this for you, but it's relatively straightforward to write an HTML template and some CSS that transforms an event sequence into a visual representation. Additional work to make that representation interactive would result in an editor. Sequences can also be analyzed and transformed in interesting ways with the functional JavaScript tool belt of your choice.
 
 At this time Barrel depends on the [events](https://www.npmjs.org/package/events) npm module to emit a 'tick' event at a given interval of time while playing. I haven't tried to figure out how to make it work in a browser without Browserify.
