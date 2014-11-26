@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:zachrose/00101010.git"
+    "url": "https://github.com/zachrose/barrel.git"
   },
   "keywords": [
     "timed", "event", "sequence", "player", "leierkasten"
