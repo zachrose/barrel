@@ -1,4 +1,4 @@
-<img id="build-status" src="https://travis-ci.org/zachrose/barrel.svg?branch=master">
+[![Build Status](https://travis-ci.org/zachrose/barrel.svg?branch=master)](https://travis-ci.org/zachrose/barrel)
 
 Everyone knows that time-based things can be done with setTimeout in JavaScript:
 
