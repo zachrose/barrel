@@ -4,12 +4,12 @@ var WebSocketServer = require('ws').Server,
     Player = require('../../lib/player');
 
 var track = [
-  { t: 100,  d: {hue:   0, saturation: 100, lightness: 50}},
-  { t: 200,  d: {hue:  60, saturation: 100, lightness: 50}},
-  { t: 300,  d: {hue: 120, saturation: 100, lightness: 50}},
-  { t: 400,  d: {hue: 180, saturation: 100, lightness: 50}},
-  { t: 500, d: {hue: 240, saturation: 100, lightness: 50}},
-  { t: 600, d: {hue: 300, saturation: 100, lightness: 50}},
+  { time: 100, data: {hue:   0, saturation: 100, lightness: 50}},
+  { time: 200, data: {hue:  60, saturation: 100, lightness: 50}},
+  { time: 300, data: {hue: 120, saturation: 100, lightness: 50}},
+  { time: 400, data: {hue: 180, saturation: 100, lightness: 50}},
+  { time: 500, data: {hue: 240, saturation: 100, lightness: 50}},
+  { time: 600, data: {hue: 300, saturation: 100, lightness: 50}},
 ];
 
 webSocketServer = new WebSocketServer({port: 8080})

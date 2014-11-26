@@ -3,21 +3,21 @@ Player = require('../lib/player');
 player = new Player(function(d){
   console.log(d);
 }).load([
-  { t: 2*0,  d: "Come" },
-  { t: 2*500,  d: "as" },
-  { t: 2*750,  d: "you" },
-  { t: 2*875,  d: "are" },
-  { t: 2*1500,  d: "as" },
-  { t: 2*1750,  d: "you" },
-  { t: 2*1825,  d: "were" },
-  { t: 2*2675,  d: "as" },
-  { t: 2*2750,  d: "I" },
-  { t: 2*2850,  d: "want" },
-  { t: 2*3000,  d: "you" },
-  { t: 2*3250,  d: "to" },
-  { t: 2*3500,  d: "be" },
+  { time: 1.2*0,     data: "Come" },
+  { time: 1.2*500,   data: "as" },
+  { time: 1.2*750,   data: "you" },
+  { time: 1.2*875,   data: "are" },
+  { time: 1.2*1500,  data: "as" },
+  { time: 1.2*1750,  data: "you" },
+  { time: 1.2*1825,  data: "were" },
+  { time: 1.2*2675,  data: "as" },
+  { time: 1.2*2750,  data: "I" },
+  { time: 1.2*2850,  data: "want" },
+  { time: 1.2*3000,  data: "you" },
+  { time: 1.2*3250,  data: "to" },
+  { time: 1.2*3500,  data: "be" },
 ]).play();
 
 setTimeout(function(){
   process.exit(0);
-}, 7500);
+}, 1.2*4000);
