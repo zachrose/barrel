@@ -1,3 +1,5 @@
+<img id="build-status" src="https://travis-ci.org/zachrose/barrel.svg?branch=master">
+
 Everyone knows that time-based things can be done with setTimeout in JavaScript:
 
 ```JavaScript
