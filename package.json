@@ -1,6 +1,6 @@
 {
   "author": "Zach Rose",
-  "name": "Barrel",
+  "name": "barrel",
   "version": "0.1.0",
   "description": "An abstract player for sequences of timed events.",
   "main": "index.js",
