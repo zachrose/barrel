@@ -5,7 +5,8 @@
   "description": "An abstract player for sequences of timed events.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "code": "plato -d reports lib/*"
   },
   "repository": {
     "type": "git",
