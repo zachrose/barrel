@@ -187,6 +187,25 @@ describe("Player", function(){
         interested.lastCall.args[0].should.equal(90);
       });
 
+      it('can optionally play the last event', function(){
+        player.jumpTo(180, true);
+        player.doer.lastCall.args[0].should.equal('boom');
+      });
+
+      it('can optionally play the last events', function(){
+        var multichannel = [
+          {time: 0,   data: "A", channel: 'one'},
+          {time: 50,  data: "B", channel: 'one'},
+          {time: 100, data: "C", channel: 'two'},
+          {time: 150, data: "D", channel: 'two'}
+        ];
+        player.load(multichannel);
+        player.jumpTo(125, true);
+        player.doer.callCount.should.equal(2);
+        player.doer.lastCall.args[0].should.equal("C");
+        player.doer.lastCall.args[1].should.equal("two");
+      });
+
     });
 
 });

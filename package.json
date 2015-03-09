@@ -12,7 +12,11 @@
     "url": "https://github.com/zachrose/barrel.git"
   },
   "keywords": [
-    "timed", "event", "sequence", "player", "leierkasten"
+    "timed",
+    "event",
+    "sequence",
+    "player",
+    "leierkasten"
   ],
   "devDependencies": {
     "mocha": "~2",
@@ -22,6 +26,7 @@
     "ws": "0.5.x"
   },
   "dependencies": {
-    "events": "~1"
+    "events": "~1",
+    "underscore": "^1.8.2"
   }
 }
