@@ -19,10 +19,11 @@
     "leierkasten"
   ],
   "devDependencies": {
+    "express": "~4",
     "mocha": "~2",
+    "plato": "^1.4.0",
     "should": "~4",
     "sinon": "~1",
-    "express": "~4",
     "ws": "0.5.x"
   },
   "dependencies": {
