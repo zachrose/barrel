@@ -29,7 +29,7 @@ describe("Player", function(){
   it('can load a Track', function(){
     var track = require('./fixtures/track');
     var player = new Player().load(track);
-    player.track.should.equal(track);
+    player.track.should.be.ok;
   });
 
   describe("playback", function(){
