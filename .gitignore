@@ -1,3 +1,4 @@
+.nyc_output
+gitignore
 node_modules
 reports
-gitignore
