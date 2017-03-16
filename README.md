@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/zachrose/barrel.svg?branch=master)](https://travis-ci.org/zachrose/barrel)
+[![Dependencies](https://david-dm.org/zachrose/barrel/status.svg)](https://david-dm.org/zachrose/barrel)
+[![Dev Dependencies](https://david-dm.org/zachrose/barrel/dev-status.svg)](https://david-dm.org/zachrose/barrel?type=dev)
 
 Everyone knows that time-based things can be done with setTimeout in JavaScript:
 
