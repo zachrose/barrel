@@ -8,7 +8,7 @@
     "test": "mocha",
     "cov": "nyc mocha",
     "code": "plato -d reports lib/*",
-    "lint": "jshint lib/*.js"
+    "lint": "jshint demos index.js lib test"
   },
   "repository": {
     "type": "git",
