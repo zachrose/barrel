@@ -1,9 +1,12 @@
-var should = require('should'),
-    muxer = require('../lib/muxer');
+'use strict';
+/* global describe, it */
 
-describe("Muxer", function(){
+var should = require('should');
+var muxer = require('../lib/muxer');
 
-  it("it can mux many named tracks into one track with many channels", function(){
+describe('Muxer', function(){
+
+  it('it can mux many named tracks into one track with many channels', function(){
       var muxed = muxer.mux({
         'count': [{time: 0, data: 'one'},{time: 10, data: 'two'}],
         'alphabet': [{time: 0, data: 'A'},{time: 10, data: 'B'},{time: 20, data: 'C'}],
@@ -21,7 +24,7 @@ describe("Muxer", function(){
       expected.forEach(function(event){ muxed.should.containEql(event); });
   });
   
-  it("can demux one track with many channels into many named tracks", function(){
+  it('can demux one track with many channels into many named tracks', function(){
     var muxed = [
       {time: 0,  channel: 'count',    data: 'one'},
       {time: 0,  channel: 'alphabet', data: 'A'},
@@ -34,7 +37,7 @@ describe("Muxer", function(){
       'count': [{time: 0, data: 'one'},{time: 10, data: 'two'}],
       'alphabet': [{time: 0, data: 'A'},{time: 10, data: 'B'},{time: 20, data: 'C'}],
       'numbers': [{time: 25, data: 3}]
-    }
+    };
     var actual = muxer.demux(muxed);
     should(actual).eql(expected);
   });

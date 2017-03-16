@@ -6,9 +6,9 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "cov": "mocha --require blanket -R html-cov > coverage.html",
+    "cov": "nyc mocha",
     "code": "plato -d reports lib/*",
-    "lint": "jshint lib/*.js"
+    "lint": "jshint demos index.js lib test"
   },
   "repository": {
     "type": "git",
@@ -22,14 +22,14 @@
     "leierkasten"
   ],
   "devDependencies": {
-    "blanket": "^1.1.6",
-    "express": "~4",
-    "jshint": "^2.6.3",
-    "mocha": "~2",
-    "plato": "^1.4.0",
-    "should": "~4",
-    "sinon": "~1",
-    "ws": "0.5.x"
+    "express": "^4",
+    "jshint": "^2",
+    "mocha": "^3",
+    "nyc": "^10",
+    "plato": "^1",
+    "should": "^11",
+    "sinon": "^2",
+    "ws": "^2"
   },
   "dependencies": {
     "events": "~1",
@@ -37,7 +37,7 @@
   },
   "config": {
     "blanket": {
-      "pattern": "/barrel\/lib/"
+      "pattern": "/barrel/lib/"
     }
   }
 }
