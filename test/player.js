@@ -1,14 +1,10 @@
-'use strict';
-/* globals afterEach, beforeEach, describe, it */
-/* jshint expr: true */
-
 require('should');
 
-var assert = require('assert');
-var sinon = require('sinon');
-var Player = require('../lib/player');
+var assert = require('assert'),
+    sinon = require('sinon'),
+    Player = require('../lib/player');
 
-describe('Player', function(){
+describe("Player", function(){
 
   var doer = sinon.spy(),
       player = null;
@@ -24,7 +20,7 @@ describe('Player', function(){
     this.clock.restore();
   });
 
-  it('accepts a doer', function(){
+  it("accepts a doer", function(){
     var doer = sinon.spy();
     var player = new Player(doer);
     player.doer.should.equal(doer);
@@ -36,7 +32,7 @@ describe('Player', function(){
     player.track.should.be.ok;
   });
 
-  describe('playback', function(){
+  describe("playback", function(){
 
     it('plays the right things at the right times', function(done){
       player.play();
@@ -50,7 +46,7 @@ describe('Player', function(){
 
     it('plays a multichannel track, calls the doer with the channel like so', function(){
       var multichannel = [
-        {time: 0, data: 'A', channel: 'my_great_channel'}
+        {time: 0, data: "A", channel: 'my_great_channel'}
       ];
       player.load(multichannel);
       player.play();
@@ -93,9 +89,9 @@ describe('Player', function(){
       player.pause();
       player.pause();
       done();
-    });
+    })
 
-    it('can be set to repeat', function(){
+    it("can be set to repeat", function(){
       player.repeat(true).play();
       this.clock.tick(400);
       player.doer.callCount.should.equal(4);
@@ -134,7 +130,7 @@ describe('Player', function(){
 
     });
 
-    describe('#isPlaying', function(){
+    describe("#isPlaying", function(){
 
       it('tells you if its playing', function(done){
         player.play();
@@ -149,7 +145,7 @@ describe('Player', function(){
 
     });
 
-    describe('#scrubTo', function(){
+    describe("#scrubTo", function(){
 
       it('can be scrubbed while not playing', function(){
         player.scrubTo(90);
@@ -166,7 +162,7 @@ describe('Player', function(){
       });
 
       it('ticks at the end of a scrub', function(){
-        var interested = sinon.spy();
+        var interested = sinon.spy()
         player.on('tick', interested);
         player.scrubTo(90);
         interested.lastCall.args[0].should.equal(90);
@@ -174,7 +170,7 @@ describe('Player', function(){
 
     });
 
-    describe('#jumpTo', function(){
+    describe("#jumpTo", function(){
 
       it('can jump to a new time by skipping over events', function(){
         player.play();
@@ -185,7 +181,7 @@ describe('Player', function(){
       });
 
       it('ticks at the end of a jump', function(){
-        var interested = sinon.spy();
+        var interested = sinon.spy()
         player.on('tick', interested);
         player.jumpTo(90);
         interested.lastCall.args[0].should.equal(90);
@@ -198,16 +194,16 @@ describe('Player', function(){
 
       it('can optionally play the last events', function(){
         var multichannel = [
-          {time: 0,   data: 'A', channel: 'one'},
-          {time: 50,  data: 'B', channel: 'one'},
-          {time: 100, data: 'C', channel: 'two'},
-          {time: 150, data: 'D', channel: 'two'}
+          {time: 0,   data: "A", channel: 'one'},
+          {time: 50,  data: "B", channel: 'one'},
+          {time: 100, data: "C", channel: 'two'},
+          {time: 150, data: "D", channel: 'two'}
         ];
         player.load(multichannel);
         player.jumpTo(125, true);
         player.doer.callCount.should.equal(2);
-        player.doer.lastCall.args[0].should.equal('C');
-        player.doer.lastCall.args[1].should.equal('two');
+        player.doer.lastCall.args[0].should.equal("C");
+        player.doer.lastCall.args[1].should.equal("two");
       });
 
     });
