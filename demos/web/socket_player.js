@@ -1,5 +1,3 @@
-'use strict';
-
 var WebSocketServer = require('ws').Server,
     express = require('express'),
     app = express(),
@@ -14,12 +12,12 @@ var track = [
   { time: 600, data: {hue: 300, saturation: 100, lightness: 50}},
 ];
 
-var webSocketServer = new WebSocketServer({port: 8080});
+webSocketServer = new WebSocketServer({port: 8080})
 
 webSocketServer.on('connection', function(socket){
-  var sender = function(d){ socket.send(JSON.stringify(d)); };
-  socket.on('message', function(){
-    new Player(sender).load(track).play();
+  socket.on('message', function(message){
+    var sender = function(d){ socket.send(JSON.stringify(d)); };
+    var player = new Player(sender).load(track).play();
   });
 });
  
@@ -28,6 +26,6 @@ app.get('/', function(req, res){
 });
 
 app.listen(3000, function() {
-  console.log('Listening on port 3000');
+    console.log('Listening on port 3000');
 });
 
